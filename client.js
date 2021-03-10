@@ -14,17 +14,37 @@ const connect = function() {
 
   conn.on('connect', () => {
     console.log("Successfully connected to game server");
-    conn.write("Name: SAM");
+    //setInterval(() => { conn.write("Move: up")}, 3000 );
+    //move(conn, "down", 5);
   });
+  
+  
+  // conn.on('connect', () => {
+  //   conn.write("Name: SAM");
+  //   conn.write("Move: down")
+  //   conn.write("Move: down");
+  //   //move(conn, "up", 5);
+  // });
 
-  conn.on('data', (data) => {
-    console.log('Server says: ', data);
-  });
+  // conn.on('data', (data) => {
+  //   console.log('Server says: ', data);
+  // });
   
   return conn;
 }
 
-module.exports = connect;
+const move = (connection, direction, times) => {
+  connection.on('connect', () => {
+    for (let t = 0; t < times; t++){
+      setTimeout(() => { 
+        connection.write(`Move: ${direction}`), times * 1000});
+    };
+  });
+};
+
+
+
+module.exports = { connect };
 
 // console.log('Connecting ...');
 // connect();
