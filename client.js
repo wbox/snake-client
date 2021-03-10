@@ -14,17 +14,10 @@ const connect = function() {
 
   conn.on('connect', () => {
     console.log("Successfully connected to game server");
+    conn.write("Name: SAM");
     //setInterval(() => { conn.write("Move: up")}, 3000 );
     //move(conn, "down", 5);
   });
-  
-  
-  // conn.on('connect', () => {
-  //   conn.write("Name: SAM");
-  //   conn.write("Move: down")
-  //   conn.write("Move: down");
-  //   //move(conn, "up", 5);
-  // });
 
   // conn.on('data', (data) => {
   //   console.log('Server says: ', data);
@@ -41,8 +34,6 @@ const move = (connection, direction, times) => {
     };
   });
 };
-
-
 
 module.exports = { connect };
 
