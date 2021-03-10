@@ -7,6 +7,7 @@ let connection;
 const setupInput = function(conn) {
   connection = conn;
   const stdin = process.stdin;
+  // event handler to call handleuserInput function.
   stdin.on("data", key => handleUserInput(key));
   stdin.setRawMode(true);
   stdin.setEncoding('utf8');
@@ -33,6 +34,10 @@ const handleUserInput = (key) => {
 
   if (key === `\u0064` || key === `\u0044`) {
     connection.write("Move: right");
+  }
+
+  if (key === `\u0074`) {
+    connection.write("Say: HELLO!");
   }
 
 };
